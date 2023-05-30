@@ -1,6 +1,6 @@
 # rest-api-microservices
 
-Projects represents the next REST API microservices:
+Project represents the next REST API microservices:
 - User Service (detailed information is included in`./user-service`)
 
 # Build
