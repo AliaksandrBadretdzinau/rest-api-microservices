@@ -9,7 +9,7 @@ Once you cloned the project you may need Docker to build all services and run te
 
 `docker-compose up`
 
-As an alternative option you can go to each service directory and run each service separately:
+As an alternative option you can go to each service's directory and run it separately:
 
 `sh start.sh`
 
