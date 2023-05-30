@@ -1,0 +1,19 @@
+version: '3'
+services:
+  user_service:
+    build: ./user-service
+    command: sh start.sh
+    volumes:
+      - ./user-service/:/app/
+    ports:
+      - "8080:8000"
+    environment:
+      - DATABASE_URI=sqlite:///users.db
+
+  user_db:
+    image: nouchka/sqlite3:latest
+    volumes:
+      - sqlite_data_user:/var/lib/sqlite/data
+
+volumes:
+  sqlite_data_user:
