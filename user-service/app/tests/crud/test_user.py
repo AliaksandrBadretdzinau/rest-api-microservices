@@ -51,7 +51,6 @@ def test_get_users() -> None:
 
 def test_get_user_by_id() -> None:
     first_user, *_ = db_manager.get_users()
-
     user = db_manager.get_user(first_user['id'])
 
     TestCase().assertDictEqual(
@@ -65,10 +64,7 @@ def test_get_user_by_id() -> None:
 
 def test_get_user_by_last_name() -> None:
     first_user, *_ = db_manager.get_users()
-
     user, *_ = db_manager.get_users(field='last_name', value=test_user.last_name)
-
-    print("user:", user)
 
     TestCase().assertDictEqual(
         {
@@ -80,9 +76,9 @@ def test_get_user_by_last_name() -> None:
 
 
 def test_add_email() -> None:
-    first_user, *_ = db_manager.get_users()
-
     test_email = Email(mail=get_email())
+    
+    first_user, *_ = db_manager.get_users()
     result = db_manager.add_email(
         user_id=first_user['id'],
         email=test_email
@@ -95,9 +91,9 @@ def test_add_email() -> None:
 
 
 def test_add_phone_number() -> None:
-    first_user, *_ = db_manager.get_users()
-
     test_phone_number = PhoneNumber(number=get_phone_number())
+
+    first_user, *_ = db_manager.get_users()
     result = db_manager.add_phone_number(
         user_id=first_user['id'],
         phone_number=test_phone_number
@@ -111,29 +107,21 @@ def test_add_phone_number() -> None:
 
 def test_update_email() -> None:
     first_user, *_ = db_manager.get_users()
-
     email, *_ = first_user['emails']
-
     email.mail = get_email()
-
     db_email = db_manager.update_email(email_id=email.id, email=email)
-
 
     TestCase().assertDictEqual(email.dict(), db_email)
 
 
 def test_update_phone_number() -> None:
     first_user, *_ = db_manager.get_users()
-
     phone_number, *_ = first_user['phone_numbers']
-
     phone_number.number = get_phone_number()
-
     db_phone_number = db_manager.update_phone_number(
         phone_number_id=phone_number.id,
         phone_number=phone_number
     )
-
 
     TestCase().assertDictEqual(phone_number.dict(), db_phone_number)
 
@@ -141,7 +129,6 @@ def test_update_phone_number() -> None:
 def test_delete_user() -> None:
     first_user, *_ = db_manager.get_users()
     db_manager.delete_user(user_id=first_user['id'])
-
     user = db_manager.get_user(first_user['id'])
 
     assert user is None
