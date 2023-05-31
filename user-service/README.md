@@ -41,4 +41,4 @@ PhoneNumber:
 
 Once you run the project you can find API documentation based on Swagger UI here: (Done automatically by FastAPI)
 
-`http://0.0.0.0/users/docs`
+`http://0.0.0.0:8080/users/docs`
