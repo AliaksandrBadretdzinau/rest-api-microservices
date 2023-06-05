@@ -19,6 +19,6 @@ class UserEmailsRead(BaseModel):
     emails: list[Email]
 
 
-class Userphone_numbersRead(BaseModel):
+class UserPhoneNumberRead(BaseModel):
     user_id: int
     phone_numbers: list[PhoneNumber]

@@ -3,7 +3,7 @@ from fastapi import APIRouter, HTTPException, status, Response
 from .db import engine
 from ..api import db_manager
 from .models import User, Email, PhoneNumber
-from .schemas import UserCreate, UserRead, UserEmailsRead, Userphone_numbersRead
+from .schemas import UserCreate, UserRead, UserEmailsRead, UserPhoneNumberRead
 
 users = APIRouter(
     prefix="/users",
@@ -96,7 +96,7 @@ def update_email(user_id: int, email_id: int, payload: Email):
 
 @users.post(
     "/{user_id}/phone-numbers",
-    response_model=Userphone_numbersRead,
+    response_model=UserPhoneNumberRead,
     status_code=status.HTTP_201_CREATED
 )
 def add_phone_number(user_id: int, payload: PhoneNumber):
